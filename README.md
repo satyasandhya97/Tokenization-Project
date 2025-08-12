@@ -28,15 +28,15 @@ Clone the repository and install dependencies:
 bash
 Copy
 Edit
-# Clone the project
+1. Clone the project
 git clone https://github.com/satyasandhya97/Tokenization-Project.git.
 
 cd Tokenization-Project
 
-# Install dependencies
+2. Install dependencies
 npm install
 
-# Start the development server
+3. Start the development server
 npm run dev
 
 📄 Usage
