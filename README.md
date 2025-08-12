@@ -29,7 +29,8 @@ bash
 Copy
 Edit
 # Clone the project
-git clone https://github.com/satyasandhya97/Tokenization-Project.git
+git clone https://github.com/satyasandhya97/Tokenization-Project.git.
+
 cd Tokenization-Project
 
 # Install dependencies
