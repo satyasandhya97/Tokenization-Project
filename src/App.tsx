@@ -1,28 +1,40 @@
-import { useState } from "react"
+import { useState } from "react";
 
 export default function TokenizerUI() {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
-  const [mode, setMode] = useState("encode");
+  const [mode, setMode] = useState<"encode" | "decode">("encode");
 
+  const handleSubmit = (input: string) => {
+    if (mode === "encode") {
+      const encoded = input.split("").map((char) => char.codePointAt(0));
+      setOutputText(encoded.join(" "));
+    } else if (mode === "decode") {
+      const decoded = input.split(" ").map((char) => String.fromCodePoint(parseInt(char)));
+      setOutputText(decoded.join(""));
+    }
+  };
 
-
+  const clearAll = () => {
+    setInputText("");
+    setOutputText("");
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center p-6">
-      {/* Header */}
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold text-gray-100 tracking-wide">
-          Smart Tokenizer
+          Smart Tokenizations Converter
         </h1>
         <p className="text-gray-400 mt-2 text-lg">
-          Encode & Decode my text
+          Transform Your Text: Encode ↔ Decode
         </p>
       </header>
 
       <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 p-8 rounded-2xl shadow-xl w-full max-w-4xl">
         <div className="flex gap-4 mb-6 justify-center">
           <button
+            onClick={() => setMode("encode")}
             className={`px-6 py-2 rounded-lg font-semibold transition-all ${mode === "encode"
               ? "bg-teal-500 text-white"
               : "bg-gray-700 hover:bg-teal-600"
@@ -31,6 +43,7 @@ export default function TokenizerUI() {
             Encode
           </button>
           <button
+            onClick={() => setMode("decode")}
             className={`px-6 py-2 rounded-lg font-semibold transition-all ${mode === "decode"
               ? "bg-pink-500 text-white"
               : "bg-gray-700 hover:bg-pink-600"
@@ -61,8 +74,15 @@ export default function TokenizerUI() {
           </div>
         </div>
 
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-center mt-6 gap-4">
           <button
+            onClick={() => handleSubmit(inputText)}
+            className="px-5 py-2 rounded-lg font-semibold bg-teal-500 hover:bg-teal-400 transition-all"
+          >
+            Convert
+          </button>
+          <button
+            onClick={clearAll}
             className="px-5 py-2 rounded-lg font-semibold bg-gray-600 hover:bg-gray-500 transition-all"
           >
             Clear All
@@ -70,7 +90,5 @@ export default function TokenizerUI() {
         </div>
       </div>
     </div>
-
-
   );
 }
