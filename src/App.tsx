@@ -21,13 +21,13 @@ export default function TokenizerUI() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center p-6">
-      <header className="mb-8 text-center">
-        <h1 className="text-4xl font-extrabold text-gray-100 tracking-wide">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center px-6 py-8">
+      <header className="mb-10 text-center">
+        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-green-400 via-teal-400 to-green-500 bg-clip-text text-transparent">
           Smart Tokenizations Converter
         </h1>
-        <p className="text-gray-400 mt-2 text-lg">
-          Transform Your Text: Encode ↔ Decode
+        <p className="text-gray-400 mt-3 text-lg md:text-xl font-light">
+          Transform Your Text: <span className="text-teal-400">Encode</span> ↔ <span className="text-pink-400">Decode</span>
         </p>
       </header>
 
